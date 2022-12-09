@@ -21,8 +21,8 @@ public class AutoAppConfig {
 
 
     // spring boot 는 수동설정은 disabled , properties 에서 설정값 변경 가능.
-    @Bean(name = "memoryMemberRepository")
-    MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
+//    @Bean(name = "memoryMemberRepository")
+//    MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 }
