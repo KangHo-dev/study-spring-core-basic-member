@@ -16,6 +16,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AllBeanTest {
 
+    /**
+     *  사용자가 동적으로 bean을 선택할 수 있다.
+     *  전략패턴을 쉽게 적용함.
+     *  discountcode(input)에 따라 DiscountPolicy(interface)에 해당하는 bean 호출
+     */
     @Test
     void findAllBean() {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class, DiscountService.class);
