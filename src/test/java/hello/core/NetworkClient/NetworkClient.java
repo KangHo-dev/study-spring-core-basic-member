@@ -1,4 +1,8 @@
 package hello.core.NetworkClient;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * InitializingBean : 의존관계 주입 후에 호출
  * DisposableBean : 빈이 종료될 때 호출
@@ -33,11 +37,13 @@ public class NetworkClient {
         System.out.println("close: " + url);
     }
 
+    @PostConstruct
     public void init() throws Exception {
         connect();
         call("초기화 연결 메시지");
     }
 
+    @PreDestroy
     public void close() throws Exception {
         System.out.println("NetworkClient.destroy");
         disconnect();
