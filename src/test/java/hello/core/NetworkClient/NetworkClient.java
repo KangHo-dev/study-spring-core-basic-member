@@ -1,8 +1,4 @@
 package hello.core.NetworkClient;
-
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-
 /**
  * InitializingBean : 의존관계 주입 후에 호출
  * DisposableBean : 빈이 종료될 때 호출
@@ -11,7 +7,7 @@ import org.springframework.beans.factory.InitializingBean;
  * 거의 쓰이지 않음
  */
 
-public class NetworkClient implements InitializingBean , DisposableBean {
+public class NetworkClient {
     private String url;
 
     public NetworkClient() {
@@ -37,14 +33,12 @@ public class NetworkClient implements InitializingBean , DisposableBean {
         System.out.println("close: " + url);
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    public void init() throws Exception {
         connect();
         call("초기화 연결 메시지");
     }
 
-    @Override
-    public void destroy() throws Exception {
+    public void close() throws Exception {
         System.out.println("NetworkClient.destroy");
         disconnect();
     }
