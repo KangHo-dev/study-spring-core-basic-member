@@ -11,21 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequiredArgsConstructor
-public class LogMemoController {
+public class LogDemoController {
 
-    private final LogMemoService logMemoService;
-    private final ObjectProvider<MyLogger> myLoggerProvider;
+    private final LogDemoService logDemoService;
+    private final MyLogger myLogger;
 
     @RequestMapping("log-demo")
     @ResponseBody
     public String logDemo(HttpServletRequest request) throws InterruptedException {
-        MyLogger myLogger = myLoggerProvider.getObject();
         String requestURL = request.getRequestURL().toString();
+
+        System.out.println("myLogger = " + myLogger.getClass());
         myLogger.setRequestURL(requestURL);
 
         myLogger.log("controller test");
         Thread.sleep(100);
-        logMemoService.logic("testId");
+        logDemoService.logic("testId");
         return "OK";
     }
 }
